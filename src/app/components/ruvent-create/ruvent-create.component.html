@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col col-md-6 offset-md-3">
+    <h3>New Ruvent</h3>
+  </div>
+</div>
+
+<form [formGroup]="ruventForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" formControlName="title" required>
+      <div
+        *ngIf="ruventForm.controls['title'].invalid && (ruventForm.controls['title'].dirty || ruventForm.controls['title'].touched)">
+        <p *ngIf="ruventForm.controls['title'].errors.required" class="text-danger">
+          A title is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="description">Description:</label>
+      <textarea class="form-control" formControlName="description" rows="3" required></textarea>
+      <div
+        *ngIf="ruventForm.controls['description'].invalid && (ruventForm.controls['description'].dirty || ruventForm.controls['description'].touched)">
+        <p *ngIf="ruventForm.controls['description'].errors.required" class="text-danger">
+          A description is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="address">Location Address:</label>
+      <input type="text" class="form-control" formControlName="address" required>
+      <div
+        *ngIf="ruventForm.controls['address'].invalid && (ruventForm.controls['address'].dirty || ruventForm.controls['address'].touched)">
+        <p *ngIf="ruventForm.controls['address'].errors.required" class="text-danger">
+          An address is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="date">Date:</label>
+      <input type="date" class="form-control" formControlName="date" required>
+      <div
+        *ngIf="ruventForm.controls['date'].invalid && (ruventForm.controls['date'].dirty || ruventForm.controls['date'].touched)">
+        <p *ngIf="ruventForm.controls['date'].errors.required" class="text-danger">
+          A date is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="startTime">Start Time:</label>
+      <input type="time" class="form-control" formControlName="startTime" required>
+      <div
+        *ngIf="ruventForm.controls['startTime'].invalid && (ruventForm.controls['startTime'].dirty || ruventForm.controls['startTime'].touched)">
+        <p *ngIf="ruventForm.controls['startTime'].errors.required" class="text-danger">
+          A start time is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col col-md-6 offset-md-3">
+      <label for="endTime">End Time:</label>
+      <input type="time" class="form-control" formControlName="endTime" required>
+      <div
+        *ngIf="ruventForm.controls['endTime'].invalid && (ruventForm.controls['endTime'].dirty || ruventForm.controls['endTime'].touched)">
+        <p *ngIf="ruventForm.controls['endTime'].errors.required" class="text-danger">
+          An end time is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-6 col-md-3 offset-md-3">
+      <button routerLink="/home" class="btn btn-secondary btn-block" type="reset">Cancel</button>
+    </div>
+    <div class="col-6 col-md-3">
+      <button [disabled]="ruventForm.invalid" class="btn btn-success btn-block" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
