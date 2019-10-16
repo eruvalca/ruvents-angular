@@ -12,8 +12,10 @@ export class RuventsService {
 
   constructor(private http: HttpClient) { }
 
-  getRuvents(): Observable<Ruvent[]> {
-    return this.http.get<Ruvent[]>(RuventsUrl).pipe();
+  getRuvents(date: string): Observable<Ruvent[]> {
+    const url = `${RuventsUrl}/home/${date}`;
+
+    return this.http.get<Ruvent[]>(url).pipe();
   }
 
   getRuvent(id: number): Observable<Ruvent> {
