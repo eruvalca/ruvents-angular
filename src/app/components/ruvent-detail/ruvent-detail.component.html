@@ -1,0 +1,15 @@
+<div *ngIf="ruvent" class="row">
+  <div class="col-12 text-center">
+    <h1>{{ruvent.title}}</h1>
+  </div>
+</div>
+<div *ngIf="ruvent" class="row">
+  <div class="col-12 col-md-4 offset-md-4">
+    <p>{{ruvent.description}}</p>
+    <p><strong>When:</strong> {{ruvent.date | date:'shortDate'}} {{ruvent.startTimeHour | numberToTime: ruvent.startTimeMinute}} - {{ruvent.endTimeHour | numberToTime: ruvent.endTimeMinute}}</p>
+    <p><strong>Where:</strong> {{ruvent.address}}</p>
+  </div>
+  <div class="col-12 text-center">
+      <button class="btn btn-secondary">Edit</button>
+  </div>
+</div>

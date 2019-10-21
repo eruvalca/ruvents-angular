@@ -8,17 +8,16 @@
   <div class="col-12 text-center">
     <h1>{{currentMonthDate.format('MMMM')}} '{{currentMonthDate.format('YY')}}</h1>
   </div>
-  <div class="col-6 text-left">
+  <div class="col-6 col-md-3 offset-md-3 text-left">
     <button (click)="getRuvents(prevMonthString)" class="btn btn-sm btn-block btn-secondary">{{prevMonthDate.format('MMMM')}} '{{prevMonthDate.format('YY')}}</button>
   </div>
-  <div class="col-6 text-right">
+  <div class="col-6 col-md-3 text-right">
     <button (click)="getRuvents(nextMonthString)" class="btn btn-sm btn-block btn-secondary">{{nextMonthDate.format('MMMM')}} '{{nextMonthDate.format('YY')}}</button>
   </div>
 </div>
 <br>
 <div class="row" *ngIf="ruvents">
   <div *ngFor="let ruvent of ruvents" class="col-12 col-md-4 ruvent-card">
-    <!-- <app-post-card [post]="post"></app-post-card> -->
     <div class="card shadow">
       <div class="card-body">
         <div class="row">
@@ -27,19 +26,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12">
-            <p class="card-text">{{ruvent.description}}</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
+          <div class="col-12 text-center">
             <p class="card-text">{{ruvent.date | date:'shortDate'}}</p>
-          </div>
-          <div class="col-4">
-            <p class="card-text">{{ruvent.startTimeHour}}:{{ruvent.startTimeMinute}}</p>
-          </div>
-          <div class="col-4">
-            <p class="card-text">{{ruvent.endTimeHour}}:{{ruvent.endTimeMinute}}</p>
           </div>
         </div>
         <div class="row">
@@ -47,7 +35,7 @@
             <p class="card-text">{{ruvent.address}}</p>
           </div>
         </div>
-        <button routerLink="/edit/{{ruvent.ruventId}}" class="btn btn-secondary btn-block">Edit</button>
+        <button routerLink="/detail/{{ruvent.ruventId}}" class="btn btn-sm btn-secondary btn-block">Details</button>
       </div>
     </div>
   </div>

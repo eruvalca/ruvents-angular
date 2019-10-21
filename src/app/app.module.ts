@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RuventCreateComponent } from './components/ruvent-create/ruvent-create.component';
 import { HomeComponent } from './components/home/home.component';
+import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.component';
+import { NumberToTimePipe } from './pipes/numberToTime';
 
 @NgModule({
   declarations: [
     AppComponent,
     RuventCreateComponent,
-    HomeComponent
+    HomeComponent,
+    RuventDetailComponent,
+    NumberToTimePipe
   ],
   imports: [
     BrowserModule,
