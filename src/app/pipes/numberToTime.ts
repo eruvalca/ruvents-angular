@@ -26,3 +26,23 @@ export class NumberToTimePipe implements PipeTransform {
         }
     }
 }
+
+@Pipe({name: 'numberToTimeCode'})
+export class NumberToTimeCodePipe implements PipeTransform {
+    transform(hour: number, minute: number): string {
+        let hourString: string;
+        let minuteString: string;
+        if (hour < 10) {
+            hourString = '0' + hour.toString();
+        } else {
+            hourString = hour.toString();
+        }
+        if (minute < 10) {
+            minuteString = '0' + minute.toString();
+        } else {
+            minuteString = minute.toString();
+        }
+
+        return hourString + ':' + minuteString;
+    }
+}

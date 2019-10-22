@@ -39,7 +39,7 @@ export class RuventsService {
   updateRuvent(id: number, ruvent: Ruvent): Observable<any> {
     const url = `${RuventsUrl}/${id}`;
 
-    return this.http.put(url, ruvent).pipe();
+    return this.http.post(url, ruvent).pipe();
     // .pipe(
     //   tap(_ => console.log(`updated product id=${id}`)),
     //   catchError(this.handleError<any>('updateProduct'))
