@@ -3,7 +3,7 @@ import * as moment from 'moment';
 
 @Pipe({name: 'numberToTime'})
 export class NumberToTimePipe implements PipeTransform {
-    transform(date: moment.Moment): string {
+    transform(date: string): string {
         // let isPM = false;
         // let hourString: string;
         // let minuteString: string;

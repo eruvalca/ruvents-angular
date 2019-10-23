@@ -3,8 +3,8 @@ export class Ruvent {
     title: string;
     description: string;
     address: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
     createDate: Date;
     createdBy: string;
     modifyDate: Date;
