@@ -3,11 +3,8 @@ export class Ruvent {
     title: string;
     description: string;
     address: string;
-    date: Date;
-    startTimeHour: number;
-    startTimeMinute: number;
-    endTimeHour: number;
-    endTimeMinute: number;
+    startDate: Date;
+    endDate: Date;
     createDate: Date;
     createdBy: string;
     modifyDate: Date;

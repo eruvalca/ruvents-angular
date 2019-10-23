@@ -5,9 +5,9 @@
         <h2 class="card-title">{{ruvent.title}}</h2>
       </div>
       <p class="card-text">{{ruvent.description}}</p>
-      <p class="card-text"><strong>When:</strong> {{ruvent.date | date:'shortDate'}}
-        {{ruvent.startTimeHour | numberToTime: ruvent.startTimeMinute}} -
-        {{ruvent.endTimeHour | numberToTime: ruvent.endTimeMinute}}</p>
+      <p class="card-text"><strong>When:</strong> {{ruvent.startDate | date:'shortDate'}}
+        {{ruvent.startDate | numberToTime}} -
+        {{ruvent.endDate | numberToTime}}</p>
       <p class="card-text"><strong>Where:</strong> {{ruvent.address}}</p>
       <div class="row">
         <div class="col-6">

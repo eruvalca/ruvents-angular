@@ -10,29 +10,23 @@ import * as moment from 'moment';
 })
 export class HomeComponent implements OnInit {
   ruvents: Ruvent[];
-  monthNames: string[] = ['January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
+
   currentMonthDate: moment.Moment;
   prevMonthDate: moment.Moment;
-  prevMonthString: string;
   nextMonthDate: moment.Moment;
-  nextMonthString: string;
 
   constructor(private ruventsService: RuventsService) { }
 
   ngOnInit() {
-    this.getRuvents(moment().format('MM-DD-YYYY'));
+    this.getRuvents(moment());
   }
 
-  getRuvents(date: string) {
-    this.ruventsService.getRuvents(date).subscribe(
+  getRuvents(date: moment.Moment) {
+    this.ruventsService.getRuvents(Number(date.format('M')), Number(date.format('YYYY'))).subscribe(
       (data) => {
-        this.currentMonthDate = moment(date);
+        this.currentMonthDate = date;
         this.prevMonthDate = moment(this.currentMonthDate).subtract(1, 'months');
-        this.prevMonthString = moment(this.prevMonthDate).format('MM-DD-YYYY');
         this.nextMonthDate = moment(this.currentMonthDate).add(1, 'months');
-        this.nextMonthString = moment(this.nextMonthDate).format('MM-DD-YYYY');
         this.ruvents = data;
       },
       (error) => alert(error)

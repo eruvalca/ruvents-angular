@@ -15,9 +15,8 @@ export class RuventEditComponent implements OnInit {
     title: new FormControl(),
     description: new FormControl(),
     address: new FormControl(),
-    date: new FormControl(),
-    startTime: new FormControl(),
-    endTime: new FormControl()
+    startDate: new FormControl(),
+    endDate: new FormControl()
   });
 
   ruvent: Ruvent;
@@ -47,11 +46,10 @@ export class RuventEditComponent implements OnInit {
       title: [this.ruvent.title, Validators.required],
       description: [this.ruvent.description, Validators.required],
       address: [this.ruvent.address, Validators.required],
-      date: [moment(this.ruvent.date).format('YYYY-MM-DD'), Validators.required],
-      startTime: [this.formatTime(this.ruvent.startTimeHour, this.ruvent.startTimeMinute),
-        Validators.required],
-      endTime: [this.formatTime(this.ruvent.endTimeHour, this.ruvent.endTimeMinute),
-        Validators.required]
+      startDate: [moment(this.ruvent.startDate).format('YYYY-MM-DDTHH:mm'),
+      Validators.required],
+      endDate: [moment(this.ruvent.endDate).format('YYYY-MM-DDTHH:mm'),
+      Validators.required]
     });
   }
 
@@ -59,15 +57,8 @@ export class RuventEditComponent implements OnInit {
     this.ruvent.title = this.ruventForm.get('title').value;
     this.ruvent.description = this.ruventForm.get('description').value;
     this.ruvent.address = this.ruventForm.get('address').value;
-    this.ruvent.date = new Date(this.ruventForm.get('date').value);
-
-    const startTime = this.ruventForm.get('startTime').value.split(':');
-    this.ruvent.startTimeHour = Number(startTime[0]);
-    this.ruvent.startTimeMinute = Number(startTime[1]);
-
-    const endTime = this.ruventForm.get('endTime').value.split(':');
-    this.ruvent.endTimeHour = Number(endTime[0]);
-    this.ruvent.endTimeMinute = Number(endTime[1]);
+    this.ruvent.startDate = moment(this.ruventForm.get('startDate').value, 'YYYY-MM-DDThh:mm').format();
+    this.ruvent.endDate = moment(this.ruventForm.get('endDate').value, 'YYYY-MM-DDThh:mm').format();
   }
 
   onSubmit() {
@@ -78,21 +69,8 @@ export class RuventEditComponent implements OnInit {
     );
   }
 
-  formatTime(hour: number, minute: number) {
-    let hourString: string;
-    let minuteString: string;
-    if (hour < 10) {
-        hourString = '0' + hour.toString();
-    } else {
-        hourString = hour.toString();
-    }
-    if (minute < 10) {
-        minuteString = '0' + minute.toString();
-    } else {
-        minuteString = minute.toString();
-    }
-
-    return hourString + ':' + minuteString;
+  formatTime(date: string) {
+    return moment(date).format('H:mm');
   }
 
 }

@@ -9,10 +9,10 @@
     <h2>{{currentMonthDate.format('MMMM')}} '{{currentMonthDate.format('YY')}}</h2>
   </div>
   <div class="col-6 col-md-3 offset-md-3 text-left">
-    <button (click)="getRuvents(prevMonthString)" class="btn btn-sm btn-block btn-outline-info">{{prevMonthDate.format('MMMM')}} '{{prevMonthDate.format('YY')}}</button>
+    <button (click)="getRuvents(prevMonthDate)" class="btn btn-sm btn-block btn-outline-info">{{prevMonthDate.format('MMMM')}} '{{prevMonthDate.format('YY')}}</button>
   </div>
   <div class="col-6 col-md-3 text-right">
-    <button (click)="getRuvents(nextMonthString)" class="btn btn-sm btn-block btn-outline-info">{{nextMonthDate.format('MMMM')}} '{{nextMonthDate.format('YY')}}</button>
+    <button (click)="getRuvents(nextMonthDate)" class="btn btn-sm btn-block btn-outline-info">{{nextMonthDate.format('MMMM')}} '{{nextMonthDate.format('YY')}}</button>
   </div>
 </div>
 <br>
@@ -27,7 +27,7 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <p class="card-text text-muted">{{ruvent.date | date:'shortDate'}} {{ruvent.startTimeHour | numberToTime: ruvent.startTimeMinute}}</p>
+            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}} {{ruvent.startDate | numberToTime}}</p>
           </div>
         </div>
         <div class="row">

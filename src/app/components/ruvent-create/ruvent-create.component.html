@@ -43,11 +43,11 @@
   </div>
   <div class="form-group row">
     <div class="col col-md-6 offset-md-3">
-      <label for="date">Date:</label>
-      <input type="date" class="form-control" formControlName="date" required>
+      <label for="date">Date & Time:</label>
+      <input type="datetime-local" class="form-control" formControlName="startDate" required>
       <div
-        *ngIf="ruventForm.controls['date'].invalid && (ruventForm.controls['date'].dirty || ruventForm.controls['date'].touched)">
-        <p *ngIf="ruventForm.controls['date'].errors.required" class="text-danger">
+        *ngIf="ruventForm.controls['startDate'].invalid && (ruventForm.controls['startDate'].dirty || ruventForm.controls['startDate'].touched)">
+        <p *ngIf="ruventForm.controls['startDate'].errors.required" class="text-danger">
           A date is required.
         </p>
       </div>
@@ -55,24 +55,12 @@
   </div>
   <div class="form-group row">
     <div class="col col-md-6 offset-md-3">
-      <label for="startTime">Start Time:</label>
-      <input type="time" class="form-control" formControlName="startTime" required>
+      <label for="date">End Date & Time:</label>
+      <input type="datetime-local" class="form-control" formControlName="endDate" required>
       <div
-        *ngIf="ruventForm.controls['startTime'].invalid && (ruventForm.controls['startTime'].dirty || ruventForm.controls['startTime'].touched)">
-        <p *ngIf="ruventForm.controls['startTime'].errors.required" class="text-danger">
-          A start time is required.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row">
-    <div class="col col-md-6 offset-md-3">
-      <label for="endTime">End Time:</label>
-      <input type="time" class="form-control" formControlName="endTime" required>
-      <div
-        *ngIf="ruventForm.controls['endTime'].invalid && (ruventForm.controls['endTime'].dirty || ruventForm.controls['endTime'].touched)">
-        <p *ngIf="ruventForm.controls['endTime'].errors.required" class="text-danger">
-          An end time is required.
+        *ngIf="ruventForm.controls['endDate'].invalid && (ruventForm.controls['endDate'].dirty || ruventForm.controls['endDate'].touched)">
+        <p *ngIf="ruventForm.controls['endDate'].errors.required" class="text-danger">
+          A date is required.
         </p>
       </div>
     </div>
