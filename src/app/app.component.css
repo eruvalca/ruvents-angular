@@ -1,8 +1,13 @@
-h2 {
+nav.navbar {
+  background-color: #fff;
+  border-bottom: 3px solid #17a2b8;
+}
+
+h1 {
   margin: 0;
-  color: #fff;
+  color: rgb(223, 111, 98);
 }
 
 .main-col {
-  margin-top: 70px;
+  margin-top: 80px;
 }

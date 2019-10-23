@@ -1,4 +1,7 @@
 .ruvent-card {
   margin-bottom: 10px;
-  ;
+}
+
+.ruvent-card button {
+  margin-top: 10px;
 }
