@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RuventsService } from 'src/app/services/ruvents.service';
 import { Ruvent } from 'src/app/models/ruvent';
 
@@ -12,7 +12,8 @@ export class RuventDetailComponent implements OnInit {
   ruvent: Ruvent;
 
   constructor(private ruventsService: RuventsService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.getRuvent();
@@ -24,6 +25,15 @@ export class RuventDetailComponent implements OnInit {
       (data) => this.ruvent = data,
       (error) => alert(error)
     );
+  }
+
+  deleteRuvent() {
+    if (confirm('Are you sure you want to delete this event?')) {
+      this.ruventsService.deleteRuvent(this.ruvent.ruventId).subscribe(
+        (data) => this.router.navigate(['/home']),
+        (error) => alert(error)
+      );
+    }
   }
 
 }

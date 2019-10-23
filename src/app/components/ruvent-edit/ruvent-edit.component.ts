@@ -4,7 +4,6 @@ import { RuventsService } from 'src/app/services/ruvents.service';
 import { Ruvent } from 'src/app/models/ruvent';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { NumberToTimePipe, NumberToTimeCodePipe } from 'src/app/pipes/numberToTime';
 
 @Component({
   selector: 'app-ruvent-edit',
@@ -22,14 +21,11 @@ export class RuventEditComponent implements OnInit {
   });
 
   ruvent: Ruvent;
-  startTimeFormat: string;
-  endTimeFormat: string;
 
   constructor(private fb: FormBuilder,
               private router: Router,
               private ruventsService: RuventsService,
-              private route: ActivatedRoute,
-              private numberToTimeCodePipe: NumberToTimeCodePipe) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getRuvent();
@@ -40,9 +36,6 @@ export class RuventEditComponent implements OnInit {
     this.ruventsService.getRuvent(id).subscribe(
       (data) => {
         this.ruvent = data;
-        this.formatTime();
-        console.log(this.startTimeFormat);
-        console.log(this.endTimeFormat);
         this.createForm();
       },
       (error) => alert(error)
@@ -55,14 +48,51 @@ export class RuventEditComponent implements OnInit {
       description: [this.ruvent.description, Validators.required],
       address: [this.ruvent.address, Validators.required],
       date: [moment(this.ruvent.date).format('YYYY-MM-DD'), Validators.required],
-      startTime: [this.startTimeFormat, Validators.required],
-      endTime: [this.endTimeFormat, Validators.required]
+      startTime: [this.formatTime(this.ruvent.startTimeHour, this.ruvent.startTimeMinute),
+        Validators.required],
+      endTime: [this.formatTime(this.ruvent.endTimeHour, this.ruvent.endTimeMinute),
+        Validators.required]
     });
   }
 
-  formatTime() {
-    this.startTimeFormat = this.numberToTimeCodePipe.transform(this.ruvent.startTimeHour, this.ruvent.startTimeMinute);
-    this.endTimeFormat = this.numberToTimeCodePipe.transform(this.ruvent.endTimeHour, this.ruvent.endTimeMinute);
+  formToModelBind() {
+    this.ruvent.title = this.ruventForm.get('title').value;
+    this.ruvent.description = this.ruventForm.get('description').value;
+    this.ruvent.address = this.ruventForm.get('address').value;
+    this.ruvent.date = new Date(this.ruventForm.get('date').value);
+
+    const startTime = this.ruventForm.get('startTime').value.split(':');
+    this.ruvent.startTimeHour = Number(startTime[0]);
+    this.ruvent.startTimeMinute = Number(startTime[1]);
+
+    const endTime = this.ruventForm.get('endTime').value.split(':');
+    this.ruvent.endTimeHour = Number(endTime[0]);
+    this.ruvent.endTimeMinute = Number(endTime[1]);
+  }
+
+  onSubmit() {
+    this.formToModelBind();
+    this.ruventsService.updateRuvent(this.ruvent.ruventId, this.ruvent).subscribe(
+      () => this.router.navigate(['/detail/' + this.ruvent.ruventId]),
+      (error) => alert(error)
+    );
+  }
+
+  formatTime(hour: number, minute: number) {
+    let hourString: string;
+    let minuteString: string;
+    if (hour < 10) {
+        hourString = '0' + hour.toString();
+    } else {
+        hourString = hour.toString();
+    }
+    if (minute < 10) {
+        minuteString = '0' + minute.toString();
+    } else {
+        minuteString = minute.toString();
+    }
+
+    return hourString + ':' + minuteString;
   }
 
 }

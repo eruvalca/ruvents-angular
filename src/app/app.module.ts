@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { RuventCreateComponent } from './components/ruvent-create/ruvent-create.component';
 import { HomeComponent } from './components/home/home.component';
 import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.component';
-import { NumberToTimePipe, NumberToTimeCodePipe } from './pipes/numberToTime';
 import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.component';
+import { NumberToTimePipe } from './pipes/numberToTime';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,7 @@ import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.compon
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [
-    NumberToTimePipe,
-    NumberToTimeCodePipe
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
