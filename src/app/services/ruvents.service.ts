@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
 
-const RuventsUrl = 'https://localhost:44356/api/ruvents';
+const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
 
 @Injectable({
   providedIn: 'root'
