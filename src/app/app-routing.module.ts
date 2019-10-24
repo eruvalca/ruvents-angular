@@ -6,11 +6,11 @@ import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.
 import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
   { path: 'new', component: RuventCreateComponent },
   { path: 'detail/:id', component: RuventDetailComponent },
-  { path: 'edit/:id', component: RuventEditComponent }
+  { path: 'edit/:id', component: RuventEditComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
 
 @NgModule({
