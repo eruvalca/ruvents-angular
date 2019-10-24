@@ -46,9 +46,9 @@ export class RuventEditComponent implements OnInit {
       title: [this.ruvent.title, Validators.required],
       description: [this.ruvent.description, Validators.required],
       address: [this.ruvent.address, Validators.required],
-      startDate: [moment(this.ruvent.startDate).format('YYYY-MM-DDTHH:mm'),
+      startDate: [moment(this.ruvent.startDate).format('YYYY-MM-DD') + 'T' + this.ruvent.startTime,
       Validators.required],
-      endDate: [moment(this.ruvent.endDate).format('YYYY-MM-DDTHH:mm'),
+      endDate: [moment(this.ruvent.endDate).format('YYYY-MM-DD') + 'T' + this.ruvent.endTime,
       Validators.required]
     });
   }
@@ -57,8 +57,12 @@ export class RuventEditComponent implements OnInit {
     this.ruvent.title = this.ruventForm.get('title').value;
     this.ruvent.description = this.ruventForm.get('description').value;
     this.ruvent.address = this.ruventForm.get('address').value;
-    this.ruvent.startDate = moment(this.ruventForm.get('startDate').value, 'YYYY-MM-DDThh:mm').format();
-    this.ruvent.endDate = moment(this.ruventForm.get('endDate').value, 'YYYY-MM-DDThh:mm').format();
+    const startDate = this.ruventForm.get('startDate').value.split('T');
+    this.ruvent.startDate = startDate[0];
+    this.ruvent.startTime = startDate[1];
+    const endDate = this.ruventForm.get('endDate').value.split('T');
+    this.ruvent.endDate = endDate[0];
+    this.ruvent.endTime = endDate[1];
   }
 
   onSubmit() {

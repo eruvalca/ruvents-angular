@@ -25,6 +25,6 @@ export class NumberToTimePipe implements PipeTransform {
         // } else {
         //     return hourString + ':' + minuteString + ' AM';
         // }
-        return moment(date).format('h:mm a');
+        return moment(date, 'HH:mm').format('h:mm a');
     }
 }
