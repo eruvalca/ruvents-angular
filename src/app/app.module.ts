@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.component';
 import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.component';
 import { NumberToTimePipe } from './pipes/numberToTime';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NumberToTimePipe } from './pipes/numberToTime';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

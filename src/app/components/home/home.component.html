@@ -1,18 +1,19 @@
 <div class="row">
   <div class="col-12 col-md-4 offset-md-4 text-center">
-    <button routerLink="/new" class="btn btn-secondary">New Ruvent</button>
+    <button routerLink="/new" class="btn btn-secondary shadow-sm">New Ruvent</button>
   </div>
 </div>
 <br>
 <div class="row" *ngIf="ruvents">
-  <div class="col-12 text-center">
-    <h2>{{currentMonthDate.format('MMMM')}} '{{currentMonthDate.format('YY')}}</h2>
+  <div class="col-2 col-md-1 offset-md-3 text-left">
+    <fa-icon (click)="getRuvents(prevMonthDate)" [icon]="faChevronCircleLeft" size="lg"></fa-icon>
   </div>
-  <div class="col-6 col-md-3 offset-md-3 text-left">
-    <button (click)="getRuvents(prevMonthDate)" class="btn btn-sm btn-block btn-outline-info">{{prevMonthDate.format('MMMM')}} '{{prevMonthDate.format('YY')}}</button>
+  <div class="col-8 col-md-4 text-center">
+    <h2>{{currentMonthDate.format('MMMM')}}</h2>
+    <p id="year-text" class="text-muted">{{currentMonthDate.format('YYYY')}}</p>
   </div>
-  <div class="col-6 col-md-3 text-right">
-    <button (click)="getRuvents(nextMonthDate)" class="btn btn-sm btn-block btn-outline-info">{{nextMonthDate.format('MMMM')}} '{{nextMonthDate.format('YY')}}</button>
+  <div class="col-2 col-md-1 text-right">
+    <fa-icon (click)="getRuvents(nextMonthDate)" [icon]="faChevronCircleRight" size="lg"></fa-icon>
   </div>
 </div>
 <br>
@@ -27,7 +28,8 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}} {{ruvent.startTime | numberToTime}}</p>
+            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}} {{ruvent.startTime | numberToTime}}
+            </p>
           </div>
         </div>
         <div class="row">
@@ -35,7 +37,8 @@
             <p class="card-text">{{ruvent.address}}</p>
           </div>
         </div>
-        <button routerLink="/detail/{{ruvent.ruventId}}" class="btn btn-sm btn-info btn-block">Details</button>
+        <button routerLink="/detail/{{ruvent.ruventId}}"
+          class="btn btn-sm btn-info btn-block shadow-sm">Details</button>
       </div>
     </div>
   </div>

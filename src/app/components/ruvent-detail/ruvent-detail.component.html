@@ -11,17 +11,17 @@
       <p class="card-text"><strong>Where:</strong> {{ruvent.address}}</p>
       <div class="row">
         <div class="col-6">
-          <button (click)="deleteRuvent()" class="btn btn-sm btn-block btn-danger">Delete</button>
+          <button (click)="deleteRuvent()" class="btn btn-sm btn-block btn-danger shadow-sm">Delete</button>
         </div>
         <div class="col-6">
-          <button routerLink="/edit/{{ruvent.ruventId}}" class="btn btn-sm btn-block btn-info">Edit</button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <button routerLink="/home" class="home-btn btn btn-sm btn-block btn-secondary">Go Home</button>
+          <button routerLink="/edit/{{ruvent.ruventId}}" class="btn btn-sm btn-block btn-info shadow-sm">Edit</button>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <button routerLink="/home" class="home-btn btn btn-sm btn-block btn-secondary shadow-sm">Go Home</button>
   </div>
 </div>

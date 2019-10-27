@@ -5,3 +5,11 @@
 .ruvent-card button {
   margin-top: 10px;
 }
+
+#year-text {
+  margin-bottom: 0;
+}
+
+fa-icon {
+  color: rgb(223, 111, 98);
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Ruvent } from 'src/app/models/ruvent';
 import { RuventsService } from 'src/app/services/ruvents.service';
 import * as moment from 'moment';
+import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,8 @@ import * as moment from 'moment';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  faChevronCircleLeft = faChevronCircleLeft;
+  faChevronCircleRight = faChevronCircleRight;
   ruvents: Ruvent[];
 
   currentMonthDate: moment.Moment;
