@@ -11,6 +11,13 @@ import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.
 import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.component';
 import { NumberToTimePipe } from './pipes/numberToTime';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { JwtModule } from '@auth0/angular-jwt';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('Token');
+}
 
 @NgModule({
   declarations: [
@@ -19,7 +26,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HomeComponent,
     RuventDetailComponent,
     NumberToTimePipe,
-    RuventEditComponent
+    RuventEditComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +36,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [
+          'ruvents-api20191022110832.azurewebsites.net',
+          'localhost:44356'
+        ],
+        blacklistedRoutes: [
+          'ruvents-api20191022110832.azurewebsites.net/api/auth/register',
+          'ruvents-api20191022110832.azurewebsites.net/api/auth/login',
+          'localhost:44356/api/auth/register',
+          'localhost:44356/api/auth/login'
+        ]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,3 +11,11 @@ h1 {
 .main-col {
   margin-top: 80px;
 }
+
+button.navbar-toggler {
+  border-color: rgb(223, 111, 98);
+}
+
+span.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(223, 111, 98, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
