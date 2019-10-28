@@ -1,4 +1,4 @@
-<div class="row">
+<div *ngIf="authService.loggedIn()" class="row">
   <div class="col-12 col-md-4 offset-md-4 text-center">
     <button routerLink="/new" class="btn btn-secondary shadow-sm">New Ruvent</button>
   </div>

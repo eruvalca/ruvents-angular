@@ -1,15 +1,20 @@
 <div *ngIf="ruvent" class="row">
-  <div class="col-12 col-md-4 offset-md-4 card shadow">
+  <div id="ruvent-card" class="col-12 col-md-4 offset-md-4 card shadow">
     <div class="card-body">
       <div class="text-center">
         <h2 class="card-title">{{ruvent.title}}</h2>
+        <p class="meta-text text-muted">Created By: {{ruvent.createdBy}} on {{ruvent.createDate | date:'shortDate'}} at
+          {{ruvent.createDate | date:'shortTime'}}</p>
+        <p *ngIf="ruvent.modifyBy" class="meta-text text-muted">Edited By: {{ruvent.modifyBy}} on {{ruvent.modifyDate | date:'shortDate'}} at
+          {{ruvent.modifyDate | date:'shortTime'}}</p>
       </div>
+      <hr>
       <p class="card-text">{{ruvent.description}}</p>
       <p class="card-text"><strong>When:</strong> {{ruvent.startDate | date:'shortDate'}}
         {{ruvent.startTime | numberToTime}} -
         {{ruvent.endTime | numberToTime}}</p>
       <p class="card-text"><strong>Where:</strong> {{ruvent.address}}</p>
-      <div class="row">
+      <div *ngIf="authService.loggedIn()" class="row">
         <div class="col-6">
           <button (click)="deleteRuvent()" class="btn btn-sm btn-block btn-danger shadow-sm">Delete</button>
         </div>
@@ -17,6 +22,7 @@
           <button routerLink="/edit/{{ruvent.ruventId}}" class="btn btn-sm btn-block btn-info shadow-sm">Edit</button>
         </div>
       </div>
+      <hr>
     </div>
   </div>
 </div>

@@ -4,6 +4,8 @@ import { RuventsService } from 'src/app/services/ruvents.service';
 import { Ruvent } from 'src/app/models/ruvent';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-ruvent-edit',
@@ -20,13 +22,16 @@ export class RuventEditComponent implements OnInit {
   });
 
   ruvent: Ruvent;
+  user: User;
 
   constructor(private fb: FormBuilder,
               private router: Router,
               private ruventsService: RuventsService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.getUser();
     this.getRuvent();
   }
 
@@ -63,6 +68,7 @@ export class RuventEditComponent implements OnInit {
     const endDate = this.ruventForm.get('endDate').value.split('T');
     this.ruvent.endDate = endDate[0];
     this.ruvent.endTime = endDate[1];
+    this.ruvent.modifyBy = this.user.username;
   }
 
   onSubmit() {
@@ -73,8 +79,11 @@ export class RuventEditComponent implements OnInit {
     );
   }
 
-  formatTime(date: string) {
-    return moment(date).format('H:mm');
+  getUser() {
+    this.authService.getUser().subscribe(
+      (data) => this.user = data,
+      (error) => alert(error)
+    );
   }
 
 }

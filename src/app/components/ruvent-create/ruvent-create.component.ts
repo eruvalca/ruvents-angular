@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Ruvent } from 'src/app/models/ruvent';
 import { RuventsService } from 'src/app/services/ruvents.service';
 import * as moment from 'moment';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-ruvent-create',
@@ -20,12 +22,15 @@ export class RuventCreateComponent implements OnInit {
   });
 
   ruvent: Ruvent = new Ruvent();
+  user: User;
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private ruventsService: RuventsService) { }
+              private ruventsService: RuventsService,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.getUser();
     this.createForm();
   }
 
@@ -49,12 +54,20 @@ export class RuventCreateComponent implements OnInit {
     const endDate = this.ruventForm.get('endDate').value.split('T');
     this.ruvent.endDate = endDate[0];
     this.ruvent.endTime = endDate[1];
+    this.ruvent.createdBy = this.user.username;
   }
 
   onSubmit() {
     this.formToModelBind();
     this.ruventsService.createRuvent(this.ruvent).subscribe(
       () => this.router.navigate(['/home']),
+      (error) => alert(error)
+    );
+  }
+
+  getUser() {
+    this.authService.getUser().subscribe(
+      (data) => this.user = data,
       (error) => alert(error)
     );
   }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RuventsService } from 'src/app/services/ruvents.service';
 import { Ruvent } from 'src/app/models/ruvent';
+import { AuthService } from 'src/app/services/auth.service';
+import * as moment from 'moment';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-ruvent-detail',
@@ -10,12 +13,15 @@ import { Ruvent } from 'src/app/models/ruvent';
 })
 export class RuventDetailComponent implements OnInit {
   ruvent: Ruvent;
+  user: User;
 
   constructor(private ruventsService: RuventsService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private authService: AuthService) { }
 
   ngOnInit() {
+    this.getUser();
     this.getRuvent();
   }
 
@@ -34,6 +40,13 @@ export class RuventDetailComponent implements OnInit {
         (error) => alert(error)
       );
     }
+  }
+
+  getUser() {
+    this.authService.getUser().subscribe(
+      (data) => this.user = data,
+      (error) => alert(error)
+    );
   }
 
 }

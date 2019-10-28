@@ -23,6 +23,10 @@ export class AuthService {
     return this.http.post<any>(RuventsUrl + 'login', user);
   }
 
+  getUser(): Observable<User> {
+    return this.http.get<User>(RuventsUrl);
+  }
+
   loggedIn() {
     const token = localStorage.getItem('Token');
     if (token) {

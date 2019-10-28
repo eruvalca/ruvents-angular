@@ -4,6 +4,7 @@ import { RuventsService } from 'src/app/services/ruvents.service';
 import * as moment from 'moment';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
   prevMonthDate: moment.Moment;
   nextMonthDate: moment.Moment;
 
-  constructor(private ruventsService: RuventsService) { }
+  constructor(private ruventsService: RuventsService,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.getRuvents(moment());
