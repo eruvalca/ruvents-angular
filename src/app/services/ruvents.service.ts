@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
 import { RuventToUser } from '../models/ruventToUser';
 
-// const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
-const RuventsUrl = 'https://localhost:44356/api/ruvents';
+const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
+// const RuventsUrl = 'https://localhost:44356/api/ruvents';
 
 @Injectable({
   providedIn: 'root'

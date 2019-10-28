@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user';
 
-// const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/auth/';
-const RuventsUrl = 'https://localhost:44356/api/auth/';
+const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/auth/';
+// const RuventsUrl = 'https://localhost:44356/api/auth/';
 
 @Injectable({
   providedIn: 'root'

@@ -44,4 +44,12 @@ export class AttendanceComponent implements OnInit {
     );
   }
 
+  // attending() {
+
+  // }
+
+  // notAttending() {
+
+  // }
+
 }
