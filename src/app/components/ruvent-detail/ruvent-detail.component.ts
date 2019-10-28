@@ -5,6 +5,8 @@ import { Ruvent } from 'src/app/models/ruvent';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
 import { User } from 'src/app/models/user';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ruvent-detail',
@@ -12,6 +14,8 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./ruvent-detail.component.css']
 })
 export class RuventDetailComponent implements OnInit {
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
   ruvent: Ruvent;
   user: User;
 

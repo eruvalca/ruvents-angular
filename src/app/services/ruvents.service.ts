@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
+import { RuventToUser } from '../models/ruventToUser';
 
 // const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
 const RuventsUrl = 'https://localhost:44356/api/ruvents';
@@ -54,6 +55,16 @@ export class RuventsService {
     // .pipe(
     //   tap(_ => console.log(`deleted product id=${id}`)),
     //   catchError(this.handleError<Product>('deleteProduct'))
+    // );
+  }
+
+  getRuventAttendance(id: number): Observable<RuventToUser[]> {
+    const url = `${RuventsUrl}/attendance/${id}`;
+
+    return this.http.get<RuventToUser[]>(url).pipe();
+    // .pipe(
+    //   tap(_ => console.log(`fetched product id=${id}`)),
+    //   catchError(this.handleError<Product>(`getProduct id=${id}`))
     // );
   }
 }

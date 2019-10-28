@@ -5,7 +5,8 @@
         <h2 class="card-title">{{ruvent.title}}</h2>
         <p class="meta-text text-muted">Created By: {{ruvent.createdBy}} on {{ruvent.createDate | date:'shortDate'}} at
           {{ruvent.createDate | date:'shortTime'}}</p>
-        <p *ngIf="ruvent.modifyBy" class="meta-text text-muted">Edited By: {{ruvent.modifyBy}} on {{ruvent.modifyDate | date:'shortDate'}} at
+        <p *ngIf="ruvent.modifyBy" class="meta-text text-muted">Edited By: {{ruvent.modifyBy}} on
+          {{ruvent.modifyDate | date:'shortDate'}} at
           {{ruvent.modifyDate | date:'shortTime'}}</p>
       </div>
       <hr>
@@ -23,6 +24,7 @@
         </div>
       </div>
       <hr>
+      <app-attendance [ruventId]="ruvent.ruventId"></app-attendance>
     </div>
   </div>
 </div>

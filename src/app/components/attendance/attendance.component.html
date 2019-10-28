@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-3 text-center">
+    <fa-icon class="text-secondary attendance-btn" [icon]="faThumbsDown"></fa-icon>
+  </div>
+  <div class="col-6 text-center">
+    <p id="attendance-header">Attendance</p>
+  </div>
+  <div class="col-3 text-center">
+    <fa-icon class="text-secondary attendance-btn" [icon]="faThumbsUp"></fa-icon>
+  </div>
+  <div class="col-6 text-center">
+    <p class="meta-text">Not Attending</p>
+  </div>
+  <div class="col-6 text-center">
+    <p class="meta-text">Attending</p>
+  </div>
+  <div class="col-6 text-center attendee-list-div">
+    <ul class="meta-text text-muted">
+      <li *ngFor="let attendee of NotAttendingUsers">{{attendee.firstName}} {{attendee.lastName}}</li>
+    </ul>
+  </div>
+  <div class="col-6 text-center">
+    <ul class="meta-text text-muted attendee-list-div">
+      <li *ngFor="let attendee of attendingUsers">{{attendee.firstName}} {{attendee.lastName}}</li>
+    </ul>
+  </div>
+</div>
