@@ -22,7 +22,7 @@ export class RuventDetailComponent implements OnInit {
   constructor(private ruventsService: RuventsService,
               private route: ActivatedRoute,
               private router: Router,
-              private authService: AuthService) { }
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.getUser();

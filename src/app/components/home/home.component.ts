@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   nextMonthDate: moment.Moment;
 
   constructor(private ruventsService: RuventsService,
-              private authService: AuthService) { }
+              public authService: AuthService) { }
 
   ngOnInit() {
     this.getRuvents(moment());
