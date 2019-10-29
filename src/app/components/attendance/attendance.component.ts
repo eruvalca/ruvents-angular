@@ -23,7 +23,9 @@ export class AttendanceComponent implements OnInit {
               private ruventsService: RuventsService) { }
 
   ngOnInit() {
-    this.getUser();
+    if (this.isLoggedIn()) {
+      this.getUser();
+    }
     this.getRuventAttendance();
   }
 
@@ -42,6 +44,10 @@ export class AttendanceComponent implements OnInit {
       },
       (error) => alert(error)
     );
+  }
+
+  isLoggedIn() {
+    return this.authService.loggedIn();
   }
 
   // attending() {

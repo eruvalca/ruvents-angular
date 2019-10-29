@@ -30,7 +30,9 @@ export class RuventCreateComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.getUser();
+    if (this.isLoggedIn()) {
+      this.getUser();
+    }
     this.createForm();
   }
 
@@ -63,6 +65,10 @@ export class RuventCreateComponent implements OnInit {
       () => this.router.navigate(['/home']),
       (error) => alert(error)
     );
+  }
+
+  isLoggedIn() {
+    return this.authService.loggedIn();
   }
 
   getUser() {

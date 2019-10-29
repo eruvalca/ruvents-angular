@@ -31,7 +31,9 @@ export class RuventEditComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.getUser();
+    if (this.isLoggedIn()) {
+      this.getUser();
+    }
     this.getRuvent();
   }
 
@@ -77,6 +79,10 @@ export class RuventEditComponent implements OnInit {
       () => this.router.navigate(['/detail/' + this.ruvent.ruventId]),
       (error) => alert(error)
     );
+  }
+
+  isLoggedIn() {
+    return this.authService.loggedIn();
   }
 
   getUser() {

@@ -8,12 +8,16 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   logOut() {
     localStorage.removeItem('Token');
+  }
+
+  isLoggedIn() {
+    return this.authService.loggedIn();
   }
 }

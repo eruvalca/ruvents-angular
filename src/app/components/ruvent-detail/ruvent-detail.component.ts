@@ -22,10 +22,12 @@ export class RuventDetailComponent implements OnInit {
   constructor(private ruventsService: RuventsService,
               private route: ActivatedRoute,
               private router: Router,
-              public authService: AuthService) { }
+              private authService: AuthService) { }
 
   ngOnInit() {
-    this.getUser();
+    if (this.isLoggedIn()) {
+      this.getUser();
+    }
     this.getRuvent();
   }
 
@@ -51,6 +53,10 @@ export class RuventDetailComponent implements OnInit {
       (data) => this.user = data,
       (error) => alert(error)
     );
+  }
+
+  isLoggedIn() {
+    return this.authService.loggedIn();
   }
 
 }

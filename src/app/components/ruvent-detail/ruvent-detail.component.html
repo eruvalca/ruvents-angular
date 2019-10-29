@@ -15,7 +15,7 @@
         {{ruvent.startTime | numberToTime}} -
         {{ruvent.endTime | numberToTime}}</p>
       <p class="card-text"><strong>Where:</strong> {{ruvent.address}}</p>
-      <div *ngIf="authService.loggedIn()" class="row">
+      <div *ngIf="isLoggedIn()" class="row">
         <div class="col-6">
           <button (click)="deleteRuvent()" class="btn btn-sm btn-block btn-danger shadow-sm">Delete</button>
         </div>
