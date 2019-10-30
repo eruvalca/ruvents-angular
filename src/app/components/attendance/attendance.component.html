@@ -1,28 +1,31 @@
 <div class="row">
-  <!-- <div class="col-3 text-center">
+  <div class="col-3 text-center">
     <fa-icon (click)="notAttending()" class="text-secondary attendance-btn" [icon]="faThumbsDown"></fa-icon>
-  </div> -->
-  <!-- <div class="col-6 text-center"> -->
-    <div class="col-12">
+  </div>
+  <div class="col-6 text-center">
     <p id="attendance-header">Attendance</p>
   </div>
-  <!-- <div class="col-3 text-center">
+  <div class="col-3 text-center">
     <fa-icon (click)="attending()" class="text-secondary attendance-btn" [icon]="faThumbsUp"></fa-icon>
-  </div> -->
-  <div class="col-6 text-center">
-    <p class="meta-text">Not Attending</p>
   </div>
-  <div class="col-6 text-center">
-    <p class="meta-text">Attending</p>
+  <div class="col-4 text-left">
+    <p *ngIf="notAttendingUsers" class="meta-text">Not Attending ({{notAttendingUsers.length}})</p>
   </div>
-  <div class="col-6 text-center attendee-list-div">
+  <div class="col-4 text-center">
+    <button (click)="toggleAttendees()"
+      class="btn btn-sm btn-block btn-info">{{!showAttendees ? 'Show' : 'Hide'}}</button>
+  </div>
+  <div class="col-4 text-right">
+    <p *ngIf="attendingUsers" class="meta-text">Attending ({{attendingUsers.length}})</p>
+  </div>
+  <div *ngIf="showAttendees" class="col-6 text-center attendee-list-div">
     <ul class="meta-text text-muted">
-      <li *ngFor="let attendee of notAttendingUsers">{{attendee.firstName}} {{attendee.lastName}}</li>
+      <li *ngFor="let attendee of notAttendingUsers" class="text-left">{{attendee.firstName}} {{attendee.lastName}}</li>
     </ul>
   </div>
-  <div class="col-6 text-center">
+  <div *ngIf="showAttendees" class="col-6 text-center">
     <ul class="meta-text text-muted attendee-list-div">
-      <li *ngFor="let attendee of attendingUsers">{{attendee.firstName}} {{attendee.lastName}}</li>
+      <li *ngFor="let attendee of attendingUsers" class="text-right">{{attendee.firstName}} {{attendee.lastName}}</li>
     </ul>
   </div>
 </div>

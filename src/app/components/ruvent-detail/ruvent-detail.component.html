@@ -12,8 +12,8 @@
       <hr>
       <p class="card-text">{{ruvent.description}}</p>
       <p class="card-text"><strong>When:</strong> {{ruvent.startDate | date:'shortDate'}}
-        {{ruvent.startTime | numberToTime}} -
-        {{ruvent.endTime | numberToTime}}</p>
+        {{ruvent.startTime | timeStringFormat}} -
+        {{ruvent.endTime | timeStringFormat}}</p>
       <p class="card-text"><strong>Where:</strong> {{ruvent.address}}</p>
       <div *ngIf="isLoggedIn()" class="row">
         <div class="col-6">

@@ -9,7 +9,7 @@ import { RuventCreateComponent } from './components/ruvent-create/ruvent-create.
 import { HomeComponent } from './components/home/home.component';
 import { RuventDetailComponent } from './components/ruvent-detail/ruvent-detail.component';
 import { RuventEditComponent } from './components/ruvent-edit/ruvent-edit.component';
-import { NumberToTimePipe } from './pipes/numberToTime';
+import { TimeStringFormat } from './pipes/timeStringFormat';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { JwtModule } from '@auth0/angular-jwt';
 import { RegisterComponent } from './components/register/register.component';
@@ -26,7 +26,7 @@ export function tokenGetter() {
     RuventCreateComponent,
     HomeComponent,
     RuventDetailComponent,
-    NumberToTimePipe,
+    TimeStringFormat,
     RuventEditComponent,
     RegisterComponent,
     LoginComponent,

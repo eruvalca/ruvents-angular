@@ -18,6 +18,7 @@ export class AttendanceComponent implements OnInit {
   user: User;
   attendingUsers: RuventToUser[];
   notAttendingUsers: RuventToUser[];
+  showAttendees = false;
 
   constructor(private authService: AuthService,
               private ruventsService: RuventsService) { }
@@ -48,6 +49,10 @@ export class AttendanceComponent implements OnInit {
 
   isLoggedIn() {
     return this.authService.loggedIn();
+  }
+
+  toggleAttendees() {
+    this.showAttendees = !this.showAttendees;
   }
 
   // attending() {
