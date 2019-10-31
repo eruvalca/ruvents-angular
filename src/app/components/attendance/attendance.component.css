@@ -8,6 +8,6 @@ ul {
     padding: 0;
 }
 
-.attendee-list-div {
-    padding: 0;
+fa-icon {
+  cursor: pointer;
 }

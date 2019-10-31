@@ -27,8 +27,10 @@ export class RuventDetailComponent implements OnInit {
   ngOnInit() {
     if (this.isLoggedIn()) {
       this.getUser();
+      this.getRuvent();
+    } else {
+      this.router.navigate(['/home']);
     }
-    this.getRuvent();
   }
 
   getRuvent() {

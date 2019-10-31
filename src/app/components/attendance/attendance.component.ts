@@ -4,7 +4,8 @@ import { User } from 'src/app/models/user';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { RuventToUser } from 'src/app/models/ruventToUser';
-import { RuventsService } from 'src/app/services/ruvents.service';
+import { AttendanceService } from 'src/app/services/attendance.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-attendance',
@@ -16,12 +17,14 @@ export class AttendanceComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faThumbsDown = faThumbsDown;
   user: User;
+  hasUserResponded = false;
+  isUserAttending = false;
   attendingUsers: RuventToUser[];
   notAttendingUsers: RuventToUser[];
   showAttendees = false;
 
   constructor(private authService: AuthService,
-              private ruventsService: RuventsService) { }
+              private attendanceService: AttendanceService) { }
 
   ngOnInit() {
     if (this.isLoggedIn()) {
@@ -37,16 +40,6 @@ export class AttendanceComponent implements OnInit {
     );
   }
 
-  getRuventAttendance() {
-    this.ruventsService.getRuventAttendance(this.ruventId).subscribe(
-      (data) => {
-        this.attendingUsers = data.filter(x => x.isAttending);
-        this.notAttendingUsers = data.filter(x => !x.isAttending);
-      },
-      (error) => alert(error)
-    );
-  }
-
   isLoggedIn() {
     return this.authService.loggedIn();
   }
@@ -55,12 +48,93 @@ export class AttendanceComponent implements OnInit {
     this.showAttendees = !this.showAttendees;
   }
 
-  // attending() {
+  toggleAttending() {
+    if (this.hasUserResponded) {
+      if (this.isUserAttending) {
+        const ruventToUserId = this.attendingUsers.find(x => x.userId === this.user.userId).ruventToUserId;
+        this.deleteAttendance(ruventToUserId);
+      } else {
+        const ruventToUser: RuventToUser = new RuventToUser();
+        ruventToUser.ruventToUserId = this.notAttendingUsers.find(x => x.userId === this.user.userId).ruventToUserId;
+        ruventToUser.isAttending = true;
+        ruventToUser.ruventId = this.ruventId;
+        ruventToUser.userId = this.user.userId;
+        this.updateAttendance(ruventToUser.ruventToUserId, ruventToUser);
+      }
+    } else {
+      const ruventToUser: RuventToUser = new RuventToUser();
+      ruventToUser.isAttending = true;
+      ruventToUser.ruventId = this.ruventId;
+      ruventToUser.userId = this.user.userId;
+      this.createAttendance(ruventToUser);
+    }
+  }
 
-  // }
+  toggleNotAttending() {
+    if (this.hasUserResponded) {
+      if (this.isUserAttending) {
+        const ruventToUser: RuventToUser = new RuventToUser();
+        ruventToUser.ruventToUserId = this.attendingUsers.find(x => x.userId === this.user.userId).ruventToUserId;
+        ruventToUser.isAttending = false;
+        ruventToUser.ruventId = this.ruventId;
+        ruventToUser.userId = this.user.userId;
+        this.updateAttendance(ruventToUser.ruventToUserId, ruventToUser);
+      } else {
+        const ruventToUserId = this.notAttendingUsers.find(x => x.userId === this.user.userId).ruventToUserId;
+        this.deleteAttendance(ruventToUserId);
+      }
+    } else {
+      const ruventToUser: RuventToUser = new RuventToUser();
+      ruventToUser.isAttending = false;
+      ruventToUser.ruventId = this.ruventId;
+      ruventToUser.userId = this.user.userId;
+      this.createAttendance(ruventToUser);
+    }
+  }
 
-  // notAttending() {
+  getRuventAttendance() {
+    this.attendanceService.getRuventAttendance(this.ruventId).subscribe(
+      (data) => {
+        this.attendingUsers = data.filter(x => x.isAttending);
+        this.notAttendingUsers = data.filter(x => !x.isAttending);
 
-  // }
+        const thisAttendingUser = this.attendingUsers.find(x => x.userId === this.user.userId);
+        const thisNonAttendingUser = this.notAttendingUsers.find(x => x.userId === this.user.userId);
+
+        if (typeof thisAttendingUser === 'undefined' && typeof thisNonAttendingUser === 'undefined') {
+          this.hasUserResponded = false;
+        } else {
+          this.hasUserResponded = true;
+          if (typeof thisAttendingUser !== 'undefined' && typeof thisNonAttendingUser === 'undefined') {
+            this.isUserAttending = true;
+          } else {
+            this.isUserAttending = false;
+          }
+        }
+      },
+      (error) => alert(error)
+    );
+  }
+
+  createAttendance(attendance: RuventToUser) {
+    this.attendanceService.createAttendance(attendance).subscribe(
+      (data) => this.getRuventAttendance(),
+      (error) => alert(error)
+    );
+  }
+
+  updateAttendance(id: number, attendance: RuventToUser) {
+    this.attendanceService.updateAttendance(id, attendance).subscribe(
+      (data) => this.getRuventAttendance(),
+      (error) => alert(error)
+    );
+  }
+
+  deleteAttendance(id: number) {
+    this.attendanceService.deleteAttendance(id).subscribe(
+      (data) => this.getRuventAttendance(),
+      (error) => alert(error)
+    );
+  }
 
 }

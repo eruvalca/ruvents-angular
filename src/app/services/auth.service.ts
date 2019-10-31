@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user';
 
-const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/auth/';
-// const RuventsUrl = 'https://localhost:44356/api/auth/';
+// const AuthUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/auth';
+const AuthUrl = 'https://localhost:44356/api/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -16,15 +16,19 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(RuventsUrl + 'register', user);
+    const url = `${AuthUrl}/register`;
+
+    return this.http.post<any>(url, user);
   }
 
   login(user: User): Observable<any> {
-    return this.http.post<any>(RuventsUrl + 'login', user);
+    const url = `${AuthUrl}/login`;
+
+    return this.http.post<any>(url, user);
   }
 
   getUser(): Observable<User> {
-    return this.http.get<User>(RuventsUrl);
+    return this.http.get<User>(AuthUrl);
   }
 
   loggedIn() {

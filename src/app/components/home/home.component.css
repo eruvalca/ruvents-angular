@@ -16,5 +16,6 @@
 }
 
 fa-icon {
+  cursor: pointer;
   color: rgb(223, 111, 98);
 }

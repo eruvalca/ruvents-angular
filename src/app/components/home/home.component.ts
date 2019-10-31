@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    this.getRuvents(moment());
+    if (this.isLoggedIn()) {
+      this.getRuvents(moment());
+    }
   }
 
   getRuvents(date: moment.Moment) {

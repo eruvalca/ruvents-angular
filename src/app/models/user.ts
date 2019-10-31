@@ -5,4 +5,8 @@ export class User {
     firstName: string;
     lastName: string;
     nickName: string;
+
+    getName() {
+        return this.nickName || this.firstName + ' ' + this.lastName;
+    }
 }

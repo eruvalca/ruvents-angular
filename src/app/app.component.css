@@ -4,6 +4,7 @@ nav.navbar {
 }
 
 h1 {
+  cursor: pointer;
   margin: 0;
   color: rgb(223, 111, 98);
 }
@@ -13,7 +14,7 @@ h1 {
 }
 
 button.navbar-toggler {
-  border-color: rgb(223, 111, 98);
+  border: none;
 }
 
 span.navbar-toggler-icon {

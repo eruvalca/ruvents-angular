@@ -1,8 +1,23 @@
-<div *ngIf="isLoggedIn()" class="row">
+<div *ngIf="isLoggedIn(); else elseBlock" class="row">
   <div class="col-12 col-md-4 offset-md-4 text-center">
     <button routerLink="/new" class="btn btn-secondary shadow-sm">New Ruvent</button>
   </div>
 </div>
+<ng-template #elseBlock>
+  <div class="row">
+    <div class="col-12 text-center">
+      <p>Please Register or Log In to continue.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <button routerLink="/register" class="btn btn-block btn-success">Register</button>
+    </div>
+    <div class="col-6">
+      <button routerLink="/login" class="btn btn-block btn-info">Log In</button>
+    </div>
+  </div>
+</ng-template>
 <br>
 <div class="row" *ngIf="ruvents">
   <div class="col-2 col-md-1 offset-md-3 text-left">
@@ -28,7 +43,8 @@
         </div>
         <div class="row">
           <div class="col-12 text-center">
-            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}} {{ruvent.startTime | timeStringFormat}}
+            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}}
+              {{ruvent.startTime | timeStringFormat}}
             </p>
           </div>
         </div>

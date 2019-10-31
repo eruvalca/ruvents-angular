@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user).subscribe(
       data => {
         if (data === null) {
-          alert('This username does not exist.')
+          alert('This username does not exist.');
         } else {
           localStorage.setItem('Token', data.token);
           this.router.navigate(['/home']);

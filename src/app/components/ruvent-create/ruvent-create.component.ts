@@ -32,8 +32,10 @@ export class RuventCreateComponent implements OnInit {
   ngOnInit() {
     if (this.isLoggedIn()) {
       this.getUser();
+      this.createForm();
+    } else {
+      this.router.navigate(['/home']);
     }
-    this.createForm();
   }
 
   createForm() {

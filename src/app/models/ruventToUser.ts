@@ -1,5 +1,3 @@
-import { User } from './user';
-
 export class RuventToUser {
     ruventToUserId: number;
     isAttending: boolean;

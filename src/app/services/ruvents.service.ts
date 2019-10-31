@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
 import { RuventToUser } from '../models/ruventToUser';
 
-const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
-// const RuventsUrl = 'https://localhost:44356/api/ruvents';
+// const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
+const RuventsUrl = 'https://localhost:44356/api/ruvents';
 
 @Injectable({
   providedIn: 'root'
@@ -24,47 +24,21 @@ export class RuventsService {
     const url = `${RuventsUrl}/${id}`;
 
     return this.http.get<Ruvent>(url).pipe();
-    // .pipe(
-    //   tap(_ => console.log(`fetched product id=${id}`)),
-    //   catchError(this.handleError<Product>(`getProduct id=${id}`))
-    // );
   }
 
   createRuvent(ruvent: Ruvent): Observable<Ruvent> {
     return this.http.post<Ruvent>(RuventsUrl, ruvent).pipe();
-    // .pipe(
-    //   tap((product: Product) => console.log(`added product w/ id=${product.id}`)),
-    //   catchError(this.handleError<Product>('addProduct'))
-    // );
   }
 
   updateRuvent(id: number, ruvent: Ruvent): Observable<any> {
     const url = `${RuventsUrl}/${id}`;
 
     return this.http.post(url, ruvent).pipe();
-    // .pipe(
-    //   tap(_ => console.log(`updated product id=${id}`)),
-    //   catchError(this.handleError<any>('updateProduct'))
-    // );
   }
 
   deleteRuvent(id: number): Observable<Ruvent> {
     const url = `${RuventsUrl}/${id}`;
 
     return this.http.delete<Ruvent>(url).pipe();
-    // .pipe(
-    //   tap(_ => console.log(`deleted product id=${id}`)),
-    //   catchError(this.handleError<Product>('deleteProduct'))
-    // );
-  }
-
-  getRuventAttendance(id: number): Observable<RuventToUser[]> {
-    const url = `${RuventsUrl}/attendance/${id}`;
-
-    return this.http.get<RuventToUser[]>(url).pipe();
-    // .pipe(
-    //   tap(_ => console.log(`fetched product id=${id}`)),
-    //   catchError(this.handleError<Product>(`getProduct id=${id}`))
-    // );
   }
 }
