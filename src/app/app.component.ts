@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem('Token');
+    location.reload();
   }
 
   isLoggedIn() {
