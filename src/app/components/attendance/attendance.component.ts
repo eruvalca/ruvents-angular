@@ -5,7 +5,6 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { RuventToUser } from 'src/app/models/ruventToUser';
 import { AttendanceService } from 'src/app/services/attendance.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-attendance',

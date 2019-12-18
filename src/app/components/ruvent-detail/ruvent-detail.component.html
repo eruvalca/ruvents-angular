@@ -3,11 +3,9 @@
     <div class="card-body">
       <div class="text-center">
         <h2 class="card-title">{{ruvent.title}}</h2>
-        <p class="meta-text text-muted">Created By: {{ruvent.createdBy}} on {{ruvent.createDate | date:'shortDate'}} at
-          {{ruvent.createDate | date:'shortTime'}}</p>
-        <p *ngIf="ruvent.modifyBy" class="meta-text text-muted">Edited By: {{ruvent.modifyBy}} on
-          {{ruvent.modifyDate | date:'shortDate'}} at
-          {{ruvent.modifyDate | date:'shortTime'}}</p>
+        <p *ngIf="audit" class="meta-text text-muted">Created By: {{audit.createdBy}} on {{audit.createDate | date:'shortDate'}}</p>
+        <p *ngIf="audit && audit.modifyBy" class="meta-text text-muted">Edited By: {{audit.modifyBy}} on
+          {{audit.modifyDate | date:'shortDate'}}</p>
       </div>
       <hr>
       <p class="card-text">{{ruvent.description}}</p>

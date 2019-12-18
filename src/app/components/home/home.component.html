@@ -1,6 +1,6 @@
 <div *ngIf="isLoggedIn(); else elseBlock" class="row">
   <div class="col-12 col-md-4 offset-md-4 text-center">
-    <button routerLink="/new" class="btn btn-secondary shadow-sm">New Ruvent</button>
+    <button routerLink="/new" class="btn btn-secondary btn-lg shadow-sm">New Ruvent</button>
   </div>
 </div>
 <ng-template #elseBlock>
@@ -35,6 +35,14 @@
 <div class="row" *ngIf="ruvents">
   <div *ngFor="let ruvent of ruvents" class="col-12 col-md-4 ruvent-card">
     <div class="card shadow">
+      <div class="row">
+        <div class="col card-text text-muted text-center">{{ruvent.startDate | date:'shortDate'}}
+        </div>
+        <div class="col card-text text-muted text-center">{{ruvent.startDate | date:'EEEE'}}
+        </div>
+        <div class="col card-text text-muted text-center">{{ruvent.startTime | timeStringFormat}}
+        </div>
+      </div>
       <div class="card-body">
         <div class="row">
           <div class="col-12 text-center">
@@ -42,17 +50,11 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-12 text-center">
-            <p class="card-text text-muted">{{ruvent.startDate | date:'shortDate'}}
-              {{ruvent.startTime | timeStringFormat}}
-            </p>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-12">
-            <p class="card-text">{{ruvent.address}}</p>
+            <p class="card-text text-center">{{ruvent.address}}</p>
           </div>
         </div>
+        <app-attendance-mini [ruventId]="ruvent.ruventId"></app-attendance-mini>
         <button routerLink="/detail/{{ruvent.ruventId}}"
           class="btn btn-sm btn-info btn-block shadow-sm">Details</button>
       </div>

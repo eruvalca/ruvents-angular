@@ -15,6 +15,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { AttendanceComponent } from './components/attendance/attendance.component';
+import { AttendanceMiniComponent } from './components/attendance-mini/attendance-mini.component';
 
 export function tokenGetter() {
   return localStorage.getItem('Token');
@@ -30,7 +31,8 @@ export function tokenGetter() {
     RuventEditComponent,
     RegisterComponent,
     LoginComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    AttendanceMiniComponent
   ],
   imports: [
     BrowserModule,

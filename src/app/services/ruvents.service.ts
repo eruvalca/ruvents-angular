@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
 import { RuventToUser } from '../models/ruventToUser';
+import { Audit } from '../models/audit';
 
 const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
 // const RuventsUrl = 'https://localhost:44356/api/ruvents';
@@ -24,6 +25,12 @@ export class RuventsService {
     const url = `${RuventsUrl}/${id}`;
 
     return this.http.get<Ruvent>(url).pipe();
+  }
+
+  getRuventAudit(id: number): Observable<Audit> {
+    const url = `${RuventsUrl}/audit/${id}`;
+
+    return this.http.get<Audit>(url).pipe();
   }
 
   createRuvent(ruvent: Ruvent): Observable<Ruvent> {
