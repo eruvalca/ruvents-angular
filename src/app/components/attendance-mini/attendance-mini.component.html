@@ -4,10 +4,7 @@
     </fa-icon>
     <p *ngIf="notAttendingUsers" class="attendance-count text-muted">{{notAttendingUsers.length}}</p>
   </div>
-  <div class="col-6 text-center">
-    <p id="attendance-header" class="text-muted">Attendance</p>
-  </div>
-  <div class="col-3 text-center">
+  <div class="col-3 offset-6 text-center">
     <fa-icon *ngIf="(attendingUsers && notAttendingUsers)" class="attendance-btn text-success" [icon]="faThumbsUp">
     </fa-icon>
     <p *ngIf="attendingUsers" class="attendance-count text-muted">{{attendingUsers.length}}</p>
