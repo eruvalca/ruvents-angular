@@ -54,7 +54,18 @@
             <p class="card-text text-center">{{ruvent.address}}</p>
           </div>
         </div>
-        <app-attendance-mini [ruventId]="ruvent.ruventId"></app-attendance-mini>
+        <div class="row">
+          <div class="col-3 text-center">
+            <fa-icon class="attendance-btn text-danger" [icon]="faThumbsDown">
+            </fa-icon>
+            <p class="attendance-count text-muted">{{ruvent.notAttending}}</p>
+          </div>
+          <div class="col-3 offset-6 text-center">
+            <fa-icon class="attendance-btn text-success" [icon]="faThumbsUp">
+            </fa-icon>
+            <p class="attendance-count text-muted">{{ruvent.attending}}</p>
+          </div>
+        </div>
         <button routerLink="/detail/{{ruvent.ruventId}}"
           class="btn btn-sm btn-info btn-block shadow-sm">Details</button>
       </div>

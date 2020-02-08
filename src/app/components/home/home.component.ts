@@ -5,6 +5,9 @@ import * as moment from 'moment';
 import { faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/services/auth.service';
+import { RuventAttendanceVM } from 'src/app/models/ruventAttendanceVM';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +17,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HomeComponent implements OnInit {
   faChevronCircleLeft = faChevronCircleLeft;
   faChevronCircleRight = faChevronCircleRight;
-  ruvents: Ruvent[];
+  faThumbsUp = faThumbsUp;
+  faThumbsDown = faThumbsDown;
+  ruvents: RuventAttendanceVM[];
 
   currentMonthDate: moment.Moment;
   prevMonthDate: moment.Moment;

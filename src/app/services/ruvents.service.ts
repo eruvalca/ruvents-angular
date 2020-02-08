@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ruvent } from '../models/ruvent';
-import { RuventToUser } from '../models/ruventToUser';
+import { RuventAttendanceVM } from '../models/ruventAttendanceVM';
 
 // const RuventsUrl = 'https://ruvents-api20191022110832.azurewebsites.net/api/ruvents';
 const RuventsUrl = 'https://localhost:44356/api/ruvents';
@@ -14,10 +14,10 @@ export class RuventsService {
 
   constructor(private http: HttpClient) { }
 
-  getRuvents(month: number, year: number): Observable<Ruvent[]> {
+  getRuvents(month: number, year: number): Observable<RuventAttendanceVM[]> {
     const url = `${RuventsUrl}/${month}/${year}`;
 
-    return this.http.get<Ruvent[]>(url).pipe();
+    return this.http.get<RuventAttendanceVM[]>(url).pipe();
   }
 
   getRuvent(id: number): Observable<Ruvent> {

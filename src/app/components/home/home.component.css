@@ -19,6 +19,15 @@
   margin-bottom: 0;
 }
 
+#attendance-header {
+  margin: 0;
+}
+
+p.attendance-count {
+  font-size: small;
+  margin: 0;
+}
+
 fa-icon {
   cursor: pointer;
   color: rgb(223, 111, 98);
