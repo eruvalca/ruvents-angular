@@ -7,7 +7,6 @@ import * as moment from 'moment';
 import { User } from 'src/app/models/user';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-import { Audit } from 'src/app/models/audit';
 
 @Component({
   selector: 'app-ruvent-detail',
@@ -19,7 +18,6 @@ export class RuventDetailComponent implements OnInit {
   faThumbsDown = faThumbsDown;
   ruvent: Ruvent;
   user: User;
-  audit: Audit;
 
   constructor(private ruventsService: RuventsService,
               private route: ActivatedRoute,
@@ -30,7 +28,6 @@ export class RuventDetailComponent implements OnInit {
     if (this.isLoggedIn()) {
       this.getUser();
       this.getRuvent();
-      this.getRuventAudit();
     } else {
       this.router.navigate(['/home']);
     }
@@ -40,14 +37,6 @@ export class RuventDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.ruventsService.getRuvent(id).subscribe(
       (data) => this.ruvent = data,
-      (error) => alert(error)
-    );
-  }
-
-  getRuventAudit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.ruventsService.getRuventAudit(id).subscribe(
-      (data) => this.audit = data,
       (error) => alert(error)
     );
   }
