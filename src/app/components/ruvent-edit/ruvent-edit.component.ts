@@ -72,7 +72,7 @@ export class RuventEditComponent implements OnInit {
     const endDate = this.ruventForm.get('endDate').value.split('T');
     this.ruvent.endDate = endDate[0];
     this.ruvent.endTime = endDate[1];
-    this.ruvent.modifyBy = this.user.username;
+    this.ruvent.modifyBy = this.user.nickName;
   }
 
   onSubmit() {

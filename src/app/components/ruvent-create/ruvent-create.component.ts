@@ -58,7 +58,7 @@ export class RuventCreateComponent implements OnInit {
     const endDate = this.ruventForm.get('endDate').value.split('T');
     this.ruvent.endDate = endDate[0];
     this.ruvent.endTime = endDate[1];
-    this.ruvent.createdBy = this.user.username;
+    this.ruvent.createdBy = this.user.nickName;
   }
 
   onSubmit() {

@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl()
+    phoneNumber: new FormControl()
   });
 
   user: User;
@@ -28,18 +27,17 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      username: [this.user.username, Validators.required],
-      password: [this.user.password, Validators.minLength(6)]
+      phoneNumber: [this.user.phoneNumber, Validators.required]
     });
   }
 
   login() {
     this.user = this.loginForm.getRawValue();
-    this.user.username = this.user.username.trim();
+    this.user.phoneNumber = this.user.phoneNumber.trim();
     this.authService.login(this.user).subscribe(
       data => {
         if (data === null) {
-          alert('This username does not exist.');
+          alert('This user does not exist.');
         } else {
           localStorage.setItem('Token', data.token);
           this.router.navigate(['/home']);
@@ -47,11 +45,11 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log(error);
-        if (error.status === 401) {
-          alert('Wrong password.');
-        } else {
-          alert('An unknown error has ocurred. Please contact support.');
-        }
+        // if (error.status === 401) {
+        //   alert('Wrong password.');
+        // } else {
+        alert('An unknown error has ocurred. Please contact Emo.');
+        // }
       }
     );
   }

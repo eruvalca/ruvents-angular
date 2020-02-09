@@ -11,8 +11,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl(),
+    phoneNumber: new FormControl(),
     firstName: new FormControl(),
     lastName: new FormControl(),
     nickName: new FormControl()
@@ -31,8 +30,7 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.registerForm = this.fb.group({
-      username: [this.user.username, Validators.required],
-      password: [this.user.password, Validators.minLength(6)],
+      phoneNumber: [this.user.phoneNumber, Validators.required],
       firstName: [this.user.firstName, Validators.required],
       lastName: [this.user.lastName, Validators.required],
       nickName: this.user.nickName
@@ -41,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     this.user = this.registerForm.getRawValue();
-    this.user.username = this.user.username.trim();
+    this.user.phoneNumber = this.user.phoneNumber.trim();
     this.authService.register(this.user).subscribe(
       () => {
         alert('Registration Successful!\n\nPress "Ok" to login.');

@@ -7,27 +7,12 @@
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="form-group row">
       <div class="col col-md-6 offset-md-3">
-        <label for="title">Username:</label>
-        <input type="text" class="form-control" formControlName="username" required>
+        <label for="title">Phone Number:</label>
+        <input type="text" class="form-control" formControlName="phoneNumber" required>
         <div
-          *ngIf="registerForm.controls['username'].invalid && (registerForm.controls['username'].dirty || registerForm.controls['username'].touched)">
-          <p *ngIf="registerForm.controls['username'].errors.required" class="text-danger">
-            A username is required.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col col-md-6 offset-md-3">
-        <label for="password">Password:</label>
-        <input type="password" class="form-control" formControlName="password" minlength="6" required autocomplete="off">
-        <div
-          *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
-          <p *ngIf="registerForm.controls['password'].errors.required" class="text-danger">
-            A password is required.
-          </p>
-          <p *ngIf="registerForm.controls['password'].errors.minLength" class="text-danger">
-            Your password must be at least 6 characters long.
+          *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
+          <p *ngIf="registerForm.controls['phoneNumber'].errors.required" class="text-danger">
+            Your phone number is required.
           </p>
         </div>
       </div>

@@ -3,7 +3,7 @@ export class RuventToUser {
     isAttending: boolean;
     ruventId: number;
     userId: number;
-    username: string;
+    phoneNumber: string;
     firstName: string;
     lastName: string;
     nickName: string;
