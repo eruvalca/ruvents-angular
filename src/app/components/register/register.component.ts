@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     this.user = this.registerForm.getRawValue();
-    this.user.phoneNumber = this.user.phoneNumber.trim();
+    this.user.phoneNumber = this.user.phoneNumber.toString().trim();
     this.authService.register(this.user).subscribe(
       () => {
         alert('Registration Successful!\n\nPress "Ok" to login.');

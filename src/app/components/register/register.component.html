@@ -8,7 +8,7 @@
     <div class="form-group row">
       <div class="col col-md-6 offset-md-3">
         <label for="title">Phone Number:</label>
-        <input type="text" class="form-control" formControlName="phoneNumber" required>
+        <input type="number" class="form-control" formControlName="phoneNumber" required>
         <div
           *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
           <p *ngIf="registerForm.controls['phoneNumber'].errors.required" class="text-danger">

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user = this.loginForm.getRawValue();
-    this.user.phoneNumber = this.user.phoneNumber.trim();
+    this.user.phoneNumber = this.user.phoneNumber.toString().trim();
     this.authService.login(this.user).subscribe(
       data => {
         if (data === null) {
